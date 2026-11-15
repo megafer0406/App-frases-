@@ -47,7 +47,7 @@ Versión de Node: la de `.nvmrc`. No necesita variables de entorno (ver `.env.ex
 ## Datos de ejemplo que debes cambiar
 
 - **Correo de soporte:** `correo@correo.com` es solo un ejemplo. Cámbialo en `src/config/plantilla.ts`.
-- **Precios y días de prueba:** son precios sugeridos en USD (`src/config/app.ts`): 6.99 al mes y 69.90 al año, que equivale a dos meses gratis, con una prueba de 7 días en los dos planes. Precios sugeridos: confirma tu oferta en Hotmart antes de vender. El paywall los muestra como demostración mientras no haya cobro.
+- **Precios y días de prueba:** son precios sugeridos en USD (`src/config/app.ts`): 3.99 al mes y 39.90 al año (precio de lanzamiento de Pensadía), que equivale a dos meses gratis, con una prueba de 7 días en los dos planes. Precios sugeridos: confirma tu oferta en Hotmart antes de vender. El paywall los muestra como demostración mientras no haya cobro.
 - **Garantía:** `garantiaDias` (`src/config/plantilla.ts`) está en 7. Cada mención dice «Garantía de 7 días», y la frase sale de un único sitio (`src/lib/garantia.ts`). Si cambias el número, cambia en todas. El texto de reembolsos (`src/features/legal/LegalPages.tsx`) dice que la solicitud dentro de ese plazo se gestiona con Hotmart.
 - **Responsable:** la razón social por defecto es MILLION BUSINESS DIGITAL (`src/config/plantilla.ts`). Si vendes con otra, cámbiala. Completa los `[COMPLETAR: …]` de `src/features/legal/LegalPages.tsx` (identificador fiscal, domicilio y ley aplicable) y revisa los textos con asesoría de tu país.
 - **Contenido:** las lecciones citan sus fuentes. Revísalas antes de publicar.

@@ -46,7 +46,7 @@ Nunca pongas un valor en `true` sin haber implementado, probado y documentado es
    - Para dar acceso según la compra, la app necesita confirmar en un servidor las compras y cancelaciones que Hotmart te avise (con su webhook). Sin ese servidor, el acceso no se puede confirmar de forma segura, y la app no lo hace hoy.
    - Garantía: `garantiaDias` está en 7 (`src/config/plantilla.ts`). Cada mención dice «Garantía de 7 días». La solicitud dentro de ese plazo se gestiona con Hotmart; no añadas otro proceso de reembolso.
    - Cancelación: el cobro se cancela en Hotmart. El botón «Cancelar suscripción» de la app solo cambia el acceso en el dispositivo hasta que la confirmación de Hotmart esté conectada. Por eso la app no dice «cancelas en dos toques».
-   - Precios sugeridos: confirma tu oferta en Hotmart antes de vender. La plantilla sale con 6.99 USD al mes y 69.90 USD al año (dos meses gratis) en `src/config/app.ts`, con una prueba de 7 días en los dos planes. Cámbialos por los de tu oferta en Hotmart y quita la marca de demostración de la pantalla cuando el cobro esté activo.
+   - Precios sugeridos: confirma tu oferta en Hotmart antes de vender. Pensadía sale con 3.99 USD al mes y 39.90 USD al año (dos meses gratis, precio de lanzamiento) en `src/config/app.ts`, con una prueba de 7 días en los dos planes. Cámbialos por los de tu oferta en Hotmart y quita la marca de demostración de la pantalla cuando el cobro esté activo.
 
 4. **Correo (opcional).** Enviar correos exige una función de servidor (por ejemplo, de Vercel o de Supabase). La clave del proveedor de correo nunca va en el navegador. Usa un remitente verificado.
 

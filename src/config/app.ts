@@ -32,14 +32,14 @@ export const PLANS: Record<PlanId, PlanConfig> = {
   anual: {
     id: 'anual',
     label: 'Anual',
-    priceUsd: 69.9,
+    priceUsd: 39.9,
     periodLabel: 'al año',
     trialDays: 7,
   },
   mensual: {
     id: 'mensual',
     label: 'Mensual',
-    priceUsd: 6.99,
+    priceUsd: 3.99,
     periodLabel: 'al mes',
     trialDays: 7,
   },
