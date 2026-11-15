@@ -16,6 +16,8 @@ export interface Conexiones {
 export const plantilla = {
   /** Nombre visible de la app. Es también el nombre del catálogo. */
   nombre: 'Pensadía',
+  /** Slogan en dos partes: la portada lo muestra como título y destaca la segunda. */
+  slogan: ['Cinco minutos.', 'Otra mente.'] as readonly [string, string],
   /** Promesa en una línea: se usa en la descripción de la página y del manifiesto. */
   tagline: 'Cinco minutos. Otra mente. Lecciones diarias para pensar mejor, liderar con criterio y entender el mundo.',
   /** Correo de soporte de ejemplo. Cámbialo por uno tuyo antes de publicar. */

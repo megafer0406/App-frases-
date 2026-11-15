@@ -16,7 +16,7 @@
   --color-danger: #b3261e;
   --color-sun: #e8a55b; /* sol de mañana: logo y detalles decorativos (no usar para texto) */
 
-  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-display: "DM Serif Display", "Iowan Old Style", Georgia, serif;
   --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --radius-card: 24px;
@@ -67,7 +67,7 @@
   h2,
   h3 {
     font-family: var(--font-display);
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: -0.01em;
     text-wrap: balance;
   }

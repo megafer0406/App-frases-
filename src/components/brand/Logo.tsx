@@ -15,12 +15,50 @@ export function LogoMark({ className = 'size-9' }: { className?: string }) {
   )
 }
 
+/** Tilde de la «í» dibujada como un pequeño sol que nace: repite el símbolo dentro de la palabra. */
+function TildeSol() {
+  return (
+    <span className="relative inline-block">
+      ı
+      <svg
+        viewBox="0 0 26 14"
+        aria-hidden
+        className="absolute left-1/2 top-[0.06em] h-[0.2em] w-[0.38em] -translate-x-[62%] -rotate-[16deg]"
+      >
+        <path d="M2 13 A11 11 0 0 1 24 13 Z" fill="#e8a55b" />
+      </svg>
+    </span>
+  )
+}
+
+/** Nombre de la marca: si lleva «í», su tilde se dibuja como el sol del logo. Lectores de pantalla leen el nombre tal cual. */
+export function NombreMarca({ className }: { className?: string }) {
+  const nombre = plantilla.nombre
+  const i = nombre.lastIndexOf('í')
+  return (
+    <span className={className}>
+      <span className="sr-only">{nombre}</span>
+      <span aria-hidden>
+        {i < 0 ? (
+          nombre
+        ) : (
+          <>
+            {nombre.slice(0, i)}
+            <TildeSol />
+            {nombre.slice(i + 1)}
+          </>
+        )}
+      </span>
+    </span>
+  )
+}
+
 /** Logo y nombre en una sola línea: el nombre de la marca nunca se parte. */
 export function Wordmark() {
   return (
-    <div className="flex shrink-0 items-center gap-2.5">
+    <div className="flex shrink-0 items-center gap-2">
       <LogoMark className="size-9 text-ink" />
-      <span className="whitespace-nowrap font-display text-[19px] tracking-tight text-ink">{plantilla.nombre}</span>
+      <NombreMarca className="whitespace-nowrap font-display text-[24px] leading-none text-ink" />
     </div>
   )
 }

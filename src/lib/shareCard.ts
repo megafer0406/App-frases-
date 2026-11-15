@@ -71,7 +71,7 @@ export function drawShareCard(input: ShareInput): HTMLCanvasElement {
   ctx.font = '600 34px Manrope, system-ui, sans-serif'
   ctx.fillText(plantilla.nombre.toUpperCase(), 80, 110)
 
-  ctx.font = '500 84px Fraunces, Georgia, serif'
+  ctx.font = '400 84px "DM Serif Display", Georgia, serif'
   ctx.fillText(`${input.firstName}, ${input.levelName.toLowerCase()}`, 80, 230)
 
   drawTree(ctx, W / 2, 560, 1.05, input.stage)
@@ -88,7 +88,7 @@ export function drawShareCard(input: ShareInput): HTMLCanvasElement {
     ctx.roundRect(x, 930, 280, 230, 36)
     ctx.fill()
     ctx.fillStyle = '#AF4B2B'
-    ctx.font = '500 92px Fraunces, Georgia, serif'
+    ctx.font = '400 92px "DM Serif Display", Georgia, serif'
     ctx.fillText(value, x + 36, 1040)
     ctx.fillStyle = '#586863'
     ctx.font = '500 30px Manrope, system-ui, sans-serif'

@@ -63,7 +63,7 @@ export function WelcomePage() {
 
       <section className="mt-6 flex flex-col gap-5 text-center md:col-start-1 md:row-start-2 md:mt-0 md:text-left">
         <motion.h1 {...fadeUp(1)} className="text-[clamp(30px,8.6vw,34px)] leading-[1.1] md:text-[clamp(36px,3.4vw,46px)]">
-          Aprende algo nuevo en <em className="text-amber">5 minutos</em>.
+          {plantilla.slogan[0]} <em className="text-amber">{plantilla.slogan[1]}</em>
         </motion.h1>
         <motion.p {...fadeUp(2)} className="mx-auto max-w-[34ch] text-[16px] leading-relaxed text-ink-muted md:mx-0 md:max-w-[42ch]">
           Historia, filosofía, liderazgo y dinero: aprende una idea, compruébala con preguntas y aplícala.
