@@ -27,7 +27,7 @@ export function BottomNav() {
                 {isActive && (
                   <motion.span
                     layoutId="nav-pill"
-                    className="absolute inset-0 rounded-[22px] bg-gradient-to-b from-[#f2c865] to-amber"
+                    className="absolute inset-0 rounded-[22px] bg-amber"
                     transition={{ type: 'spring', stiffness: 420, damping: 36 }}
                   />
                 )}

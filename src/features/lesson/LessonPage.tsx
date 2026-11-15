@@ -582,7 +582,7 @@ function DoneStep({
       totalXp: after.totalXp,
     })
     track('share_card', { lessons: after.lessonsCompleted })
-    await shareCanvas(canvas, 'sabiduria-progreso.png')
+    await shareCanvas(canvas, 'pensadia-progreso.png')
   }
 
   return (

@@ -19,14 +19,14 @@ function drawTree(ctx: CanvasRenderingContext2D, x: number, y: number, scale: nu
   ctx.save()
   ctx.translate(x, y)
   ctx.scale(scale, scale)
-  ctx.fillStyle = 'rgba(233,180,76,0.16)'
+  ctx.fillStyle = 'rgba(232,165,91,0.16)'
   ctx.beginPath()
   ctx.ellipse(0, 300, 180, 26, 0, 0, Math.PI * 2)
   ctx.fill()
   const trunkTop = [280, 250, 200, 160, 120, 120][stage] ?? 120
   ctx.fillStyle = '#8A6A3C'
   ctx.fillRect(-7, trunkTop, 14, 300 - trunkTop)
-  const leaf = stage >= 5 ? '#E9B44C' : stage >= 3 ? '#7E9A7B' : '#9DB39A'
+  const leaf = stage >= 5 ? '#E8A55B' : stage >= 3 ? '#7E9A7B' : '#9DB39A'
   const crown = (cx: number, cy: number, r: number, color: string) => {
     ctx.fillStyle = color
     ctx.beginPath()
@@ -41,7 +41,7 @@ function drawTree(ctx: CanvasRenderingContext2D, x: number, y: number, scale: nu
     crown(-70, base + 30, 60, '#7E9A7B')
     crown(72, base + 26, 64, '#BFD1BC')
     if (stage >= 5) {
-      crown(0, base, 180, 'rgba(233,180,76,0.18)')
+      crown(0, base, 180, 'rgba(232,165,91,0.18)')
     }
   }
   ctx.restore()
@@ -55,21 +55,21 @@ export function drawShareCard(input: ShareInput): HTMLCanvasElement {
   if (!ctx) return canvas
 
   const bg = ctx.createLinearGradient(0, 0, 0, H)
-  bg.addColorStop(0, '#15171C')
-  bg.addColorStop(1, '#0C0D10')
+  bg.addColorStop(0, '#FFFDF9')
+  bg.addColorStop(1, '#F1EADF')
   ctx.fillStyle = bg
   ctx.fillRect(0, 0, W, H)
 
   const glow = ctx.createRadialGradient(W / 2, 420, 40, W / 2, 420, 620)
-  glow.addColorStop(0, 'rgba(233,180,76,0.22)')
-  glow.addColorStop(1, 'rgba(233,180,76,0)')
+  glow.addColorStop(0, 'rgba(232,165,91,0.22)')
+  glow.addColorStop(1, 'rgba(232,165,91,0)')
   ctx.fillStyle = glow
   ctx.fillRect(0, 0, W, H)
 
-  ctx.fillStyle = '#F4EFE6'
+  ctx.fillStyle = '#1F3D38'
   ctx.textBaseline = 'alphabetic'
   ctx.font = '600 34px Manrope, system-ui, sans-serif'
-  ctx.fillText('SABIDURÍA', 80, 110)
+  ctx.fillText(plantilla.nombre.toUpperCase(), 80, 110)
 
   ctx.font = '500 84px Fraunces, Georgia, serif'
   ctx.fillText(`${input.firstName}, ${input.levelName.toLowerCase()}`, 80, 230)
@@ -83,19 +83,19 @@ export function drawShareCard(input: ShareInput): HTMLCanvasElement {
   ]
   stats.forEach(([value, label], i) => {
     const x = 80 + i * 320
-    ctx.fillStyle = '#1E2129'
+    ctx.fillStyle = '#FFFDF9'
     ctx.beginPath()
     ctx.roundRect(x, 930, 280, 230, 36)
     ctx.fill()
-    ctx.fillStyle = '#E9B44C'
+    ctx.fillStyle = '#AF4B2B'
     ctx.font = '500 92px Fraunces, Georgia, serif'
     ctx.fillText(value, x + 36, 1040)
-    ctx.fillStyle = '#A59F94'
+    ctx.fillStyle = '#586863'
     ctx.font = '500 30px Manrope, system-ui, sans-serif'
     ctx.fillText(label, x + 36, 1100)
   })
 
-  ctx.fillStyle = '#A59F94'
+  ctx.fillStyle = '#586863'
   ctx.font = '500 32px Manrope, system-ui, sans-serif'
   ctx.fillText(`${input.totalXp} XP · 5 minutos al día`, 80, 1260)
   return canvas

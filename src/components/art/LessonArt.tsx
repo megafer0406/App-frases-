@@ -4,14 +4,14 @@ import { cn } from '../../lib/cn'
 import type { ArtConfig, SceneId, Tone } from '../../content/art'
 
 const PALETTE: Record<Tone, { main: string; soft: string; glow: string }> = {
-  amber: { main: '#E9B44C', soft: '#F6C96A', glow: '#E9B44C' },
-  copper: { main: '#D9825B', soft: '#EBA384', glow: '#D9825B' },
-  sage: { main: '#9DB39A', soft: '#BFD1BC', glow: '#9DB39A' },
+  amber: { main: '#E8A55B', soft: '#F1C48F', glow: '#E8A55B' },
+  copper: { main: '#C8693F', soft: '#EBA384', glow: '#D9825B' },
+  sage: { main: '#6E9278', soft: '#BFD1BC', glow: '#9DB39A' },
 }
 
-const INK = '#F4EFE6'
-const FAINT = 'rgba(244,239,230,0.14)'
-const MUTED = 'rgba(244,239,230,0.45)'
+const INK = '#1F3D38'
+const FAINT = 'rgba(31,61,56,0.08)'
+const MUTED = 'rgba(31,61,56,0.62)'
 
 type P = { c: (typeof PALETTE)[Tone] }
 
@@ -64,7 +64,7 @@ const SCENES: Record<SceneId, (p: P) => ReactNode> = {
       {[0, 1, 2, 3].map((i) => (
         <rect key={i} x={36} y={58 + i * 24} width={140 - i * 14} height={8} rx={4} fill={FAINT} />
       ))}
-      <circle cx={210} cy={96} r={44} fill="rgba(21,23,28,0.6)" stroke={c.main} strokeWidth={5} />
+      <circle cx={210} cy={96} r={44} fill="rgba(255,253,249,0.75)" stroke={c.main} strokeWidth={5} />
       <circle cx={210} cy={96} r={34} fill={`${c.main}1F`} />
       <line x1={242} y1={130} x2={276} y2={164} stroke={c.main} strokeWidth={9} strokeLinecap="round" />
       <rect x={198} y={86} width={22} height={8} rx={4} fill={c.soft} />
@@ -150,7 +150,7 @@ const SCENES: Record<SceneId, (p: P) => ReactNode> = {
       ].map((n, i) => (
         <g key={n.l}>
           <motion.circle cx={n.x} cy={100} r={30} fill={i === 1 ? c.main : FAINT} stroke={c.main} strokeWidth={2} initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: i * 0.15, type: 'spring', stiffness: 260, damping: 18 }} style={{ transformOrigin: `${n.x}px 100px` }} />
-          <text x={n.x} y={108} textAnchor="middle" fill={i === 1 ? '#0C0D10' : INK} fontSize={22} fontWeight={800}>{n.l}</text>
+          <text x={n.x} y={108} textAnchor="middle" fill={INK} fontSize={22} fontWeight={800}>{n.l}</text>
           <text x={n.x} y={150} textAnchor="middle" fill={MUTED} fontSize={12}>{n.t}</text>
         </g>
       ))}
@@ -293,12 +293,12 @@ export function SceneArt({ scene, tone = 'amber', className }: { scene: SceneId;
       <defs>
         <radialGradient id={`bg-${id}`} cx="30%" cy="20%" r="90%">
           <stop offset="0" stopColor={c.glow} stopOpacity="0.28" />
-          <stop offset="1" stopColor="#15171C" stopOpacity="1" />
+          <stop offset="1" stopColor="#F1EADF" stopOpacity="1" />
         </radialGradient>
       </defs>
       <rect width="320" height="200" fill={`url(#bg-${id})`} />
       {Array.from({ length: 7 }).map((_, i) => (
-        <line key={i} x1={0} x2={320} y1={i * 34} y2={i * 34} stroke="rgba(244,239,230,0.035)" />
+        <line key={i} x1={0} x2={320} y1={i * 34} y2={i * 34} stroke="rgba(31,61,56,0.05)" />
       ))}
       {SCENES[scene]({ c })}
     </svg>

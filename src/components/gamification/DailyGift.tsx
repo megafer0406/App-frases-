@@ -32,7 +32,7 @@ export function DailyGift({ fact }: { fact?: string }) {
         <motion.div
           animate={opening && !opened ? { rotate: [0, -8, 8, -8, 8, 0], scale: [1, 1.08, 1] } : { rotate: 0, scale: 1 }}
           transition={{ duration: 0.25 }}
-          className="grid size-16 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-[#F6C96A] to-[#B9811F] text-bg shadow-[0_4px_14px_-6px_rgb(233_180_76/0.5)]"
+          className="grid size-16 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-[#E8A55B] to-[#AF4B2B] text-bg shadow-[0_6px_16px_-8px_rgb(175_75_43/0.5)]"
         >
           {opened ? <Sparkles className="size-7" aria-hidden /> : <Gift className="size-7" aria-hidden />}
         </motion.div>

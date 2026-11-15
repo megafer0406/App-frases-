@@ -73,7 +73,7 @@ export function TrackPage() {
         <motion.button
           {...fadeUp(3)}
           onClick={() => navigate(`/leccion/${firstPending.id}`)}
-          className="mt-7 flex min-h-16 w-full items-center justify-center gap-2.5 rounded-btn bg-gradient-to-b from-[#f2c865] to-amber px-6 text-[17px] font-bold text-bg shadow-[0_4px_14px_-6px_rgb(233_180_76/0.45)]"
+          className="mt-7 flex min-h-16 w-full items-center justify-center gap-2.5 rounded-btn bg-amber px-6 text-[17px] font-bold text-bg shadow-[0_6px_16px_-8px_rgb(175_75_43/0.55)]"
           whileTap={{ scale: 0.97 }}
         >
           <Play className="size-5 fill-current" aria-hidden /> Seguir con la siguiente lección
@@ -83,11 +83,11 @@ export function TrackPage() {
       {/* Mapa de la ruta */}
       <motion.section {...fadeUp(4)} className="relative mt-10 w-full" style={{ aspectRatio: `${MAP_W} / ${mapH}` }}>
         <svg viewBox={`0 0 ${MAP_W} ${mapH}`} className="absolute inset-0 size-full" aria-hidden>
-          <path d={pathD} fill="none" stroke="rgba(244,239,230,0.12)" strokeWidth={4} strokeLinecap="round" strokeDasharray="2 10" />
+          <path d={pathD} fill="none" stroke="rgba(31,61,56,0.16)" strokeWidth={4} strokeLinecap="round" strokeDasharray="2 10" />
           <motion.path
             d={pathD}
             fill="none"
-            stroke="#E9B44C"
+            stroke="#AF4B2B"
             strokeWidth={4}
             strokeLinecap="round"
             initial={{ pathLength: 0 }}

@@ -15,9 +15,9 @@ export interface Conexiones {
 
 export const plantilla = {
   /** Nombre visible de la app. Es también el nombre del catálogo. */
-  nombre: 'Sabiduría Diaria',
+  nombre: 'Pensadía',
   /** Promesa en una línea: se usa en la descripción de la página y del manifiesto. */
-  tagline: '5 minutos al día para pensar mejor, liderar con criterio y entender el mundo.',
+  tagline: 'Cinco minutos. Otra mente. Lecciones diarias para pensar mejor, liderar con criterio y entender el mundo.',
   /** Correo de soporte de ejemplo. Cámbialo por uno tuyo antes de publicar. */
   contactoEmail: 'correo@correo.com',
   /** Responsable de los textos legales. Si vendes con otra razón social, cámbiala aquí. */

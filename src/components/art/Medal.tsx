@@ -4,7 +4,7 @@ import { cn } from '../../lib/cn'
 import type { Tone } from '../../content/art'
 
 const RING: Record<Tone, string> = {
-  amber: 'from-[#F6C96A] via-[#E9B44C] to-[#B9811F]',
+  amber: 'from-[#F1C48F] via-[#E8A55B] to-[#AF4B2B]',
   copper: 'from-[#EBA384] via-[#D9825B] to-[#9C5A3A]',
   sage: 'from-[#BFD1BC] via-[#9DB39A] to-[#5F7A5C]',
 }

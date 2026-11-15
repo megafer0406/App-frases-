@@ -66,7 +66,7 @@ export function Sheet({ open, onClose, title, children }: SheetProps) {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
         >
-          <div aria-hidden onClick={onClose} className="absolute inset-0 bg-black/60 " />
+          <div aria-hidden onClick={onClose} className="absolute inset-0 bg-ink/45 " />
           <motion.div
             ref={panelRef}
             tabIndex={-1}

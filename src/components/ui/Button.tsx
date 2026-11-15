@@ -15,8 +15,8 @@ interface ButtonProps extends Omit<HTMLMotionProps<'button'>, 'children'> {
 
 const VARIANTS: Record<Variant, string> = {
   primary:
-    'bg-gradient-to-b from-[#f2c865] to-amber text-bg shadow-[0_4px_14px_-6px_rgb(233_180_76/0.45)] hover:brightness-105',
-  secondary: 'bg-surface-2 text-ink border border-line hover:bg-[#262a34]',
+    'bg-amber text-bg shadow-[0_6px_16px_-8px_rgb(175_75_43/0.55)] hover:bg-amber-deep',
+  secondary: 'bg-surface-2 text-ink border border-line hover:bg-[#e8dfd1]',
   ghost: 'text-ink-muted hover:text-ink underline-offset-4 hover:underline bg-transparent',
   danger: 'bg-transparent text-danger border border-danger/40 hover:bg-danger/10',
 }

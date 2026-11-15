@@ -17,7 +17,7 @@ export function WeekStrip({ days }: { days: DayActivity[] }) {
               transition={{ delay: 0.05 * i, type: 'spring', stiffness: 300, damping: 20 }}
               className={cn(
                 'relative grid aspect-square w-full max-w-10 place-items-center rounded-full border text-[13px] font-bold transition-colors',
-                active ? 'border-amber/60 bg-gradient-to-b from-[#F6C96A] to-amber text-bg' : 'border-line bg-surface-1 text-ink-muted',
+                active ? 'border-amber/60 bg-amber text-bg' : 'border-line bg-surface-1 text-ink-muted',
                 d.isToday && !active && 'border-amber/60 ring-2 ring-amber/30',
               )}
               aria-label={`${d.label}: ${active ? `${d.minutes} minutos` : 'sin actividad'}`}

@@ -77,7 +77,7 @@ export function ProfilePage() {
       minutes: stats.minutesLearned,
       totalXp: stats.totalXp,
     })
-    await shareCanvas(canvas, 'sabiduria-progreso.png')
+    await shareCanvas(canvas, 'pensadia-progreso.png')
   }
 
   return (

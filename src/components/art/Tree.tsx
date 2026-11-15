@@ -12,12 +12,12 @@ export function Tree({ stage, size = 160, className }: { stage: number; size?: n
   const trunkTop = [176, 160, 132, 110, 84, 84][s]
   const trunkW = [0, 0, 6, 8, 10, 10][s]
   const crownCenterY = [176, 158, 118, 84, 70, 62][s]
-  const leaf = s >= 5 ? '#E9B44C' : s >= 3 ? '#7E9A7B' : '#9DB39A'
+  const leaf = s >= 5 ? '#E8A55B' : s >= 3 ? '#7E9A7B' : '#9DB39A'
 
   return (
     <div className={cn('relative grid place-items-center', className)} style={{ width: size, height: size }} role="img" aria-label={`Tu árbol: ${TREE_STAGES[s]}`}>
       <svg viewBox="0 0 200 200" className="size-full overflow-visible" aria-hidden>
-        <ellipse cx={100} cy={182} rx={56} ry={9} fill="rgba(233,180,76,0.14)" />
+        <ellipse cx={100} cy={182} rx={56} ry={9} fill="rgba(232,165,91,0.14)" />
 
         {s === 0 && (
           <motion.g initial={{ scale: 0.6 }} animate={{ scale: 1 }} style={{ transformOrigin: '100px 180px' }} transition={{ type: 'spring', stiffness: 160, damping: 14 }}>
@@ -64,7 +64,7 @@ export function Tree({ stage, size = 160, className }: { stage: number; size?: n
               )}
               {s === 5 && (
                 <>
-                  <circle cx={100} cy={crownCenterY} r={62} fill="rgba(233,180,76,0.18)" />
+                  <circle cx={100} cy={crownCenterY} r={62} fill="rgba(232,165,91,0.18)" />
                   {[
                     [80, 40],
                     [126, 50],
@@ -72,7 +72,7 @@ export function Tree({ stage, size = 160, className }: { stage: number; size?: n
                     [144, 80],
                     [104, 24],
                   ].map(([x, y]) => (
-                    <circle key={`${x}-${y}`} cx={x} cy={y} r={4} fill="#F6C96A" />
+                    <circle key={`${x}-${y}`} cx={x} cy={y} r={4} fill="#F1C48F" />
                   ))}
                 </>
               )}

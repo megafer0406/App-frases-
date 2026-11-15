@@ -38,6 +38,7 @@ export function JournalPage() {
     <PageFrame withNav>
       <motion.div {...fadeUp(0)} className="relative pt-2">
         <ArtFrame art={{ image: '/img/bg-cuaderno.jpg', scene: 'curve', tone: 'sage' }} className="h-44" />
+        <div aria-hidden className="absolute inset-x-0 bottom-0 h-3/4 rounded-b-card bg-gradient-to-t from-bg via-bg/80 to-transparent" />
         <div className="absolute inset-x-5 bottom-5">
           <h1 className="text-[34px] leading-tight">Tu diario</h1>
           <p className="mt-1 text-[15px] text-ink-muted">Lo que aprendiste, en tus palabras.</p>

@@ -41,7 +41,7 @@ export function HeroCaptura() {
           <Rombo className="-bottom-2.5 -right-2.5" />
         </div>
 
-        <div className="captura-flota captura-mascara relative z-[1] w-[min(268px,74%)] overflow-hidden rounded-t-[2.6rem] border-[7px] border-b-0 border-surface-2 bg-bg shadow-[0_30px_60px_-28px_rgb(0_0_0/0.85)]">
+        <div className="captura-flota captura-mascara relative z-[1] w-[min(268px,74%)] overflow-hidden rounded-t-[2.6rem] border-[7px] border-b-0 border-surface-2 bg-bg shadow-[0_30px_60px_-28px_rgb(31_61_56/0.45)]">
           <img
             src="/img/captura-hoy.webp"
             alt={`Pantalla principal de la app ${plantilla.nombre}`}

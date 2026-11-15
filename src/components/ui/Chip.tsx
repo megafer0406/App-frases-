@@ -24,7 +24,7 @@ export function Chip({ selected, onSelect, children, icon, className }: ChipProp
       className={cn(
         'flex min-h-14 w-full items-center gap-3 rounded-btn border px-4 text-left text-[16px] font-medium transition-colors duration-200',
         selected
-          ? 'border-amber/70 bg-amber/10 text-ink shadow-[0_0_0_1px_rgb(233_180_76/0.25)]'
+          ? 'border-amber/70 bg-amber/10 text-ink shadow-[0_0_0_1px_rgb(175_75_43/0.25)]'
           : 'border-line bg-surface-1 text-ink hover:border-ink/20',
         className,
       )}
