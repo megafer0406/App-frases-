@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+@theme {
+  /* Paleta «noche y pergamino»: tokens de color de toda la app. */
+  --color-bg: #0c0d10;
+  --color-surface-1: #15171c;
+  --color-surface-2: #1e2129;
+  --color-line: rgb(244 239 230 / 0.08);
+  --color-ink: #f4efe6;
+  --color-ink-muted: #a59f94;
+  --color-amber: #e9b44c;
+  --color-amber-deep: #b9811f;
+  --color-copper: #d9825b;
+  --color-sage: #9db39a;
+  --color-danger: #e4786a;
+
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius-card: 24px;
+  --radius-sheet: 32px;
+  --radius-btn: 18px;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-size-adjust: 100%;
+    color-scheme: dark;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background: var(--color-bg);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  #root {
+    min-height: 100dvh;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-amber) 35%, transparent);
+  }
+
+  :focus-visible {
+    outline: 3px solid color-mix(in oklab, var(--color-amber) 70%, transparent);
+    outline-offset: 2px;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Sin palabras sueltas en la última línea: párrafos con «pretty» y etiquetas cortas con «balance». */
+  body {
+    text-wrap: pretty;
+  }
+
+  button > span,
+  [role="radio"] span,
+  summary,
+  label,
+  a {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Textura de grano sobre todo el fondo: quita el aspecto plano. */
+  .grain::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    z-index: 60;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Filete ámbar estático alrededor del CTA principal del paywall (sin giro en bucle). */
+  .premium-border {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .premium-border::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    z-index: -1;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--color-amber) 50%, var(--color-copper) 100%);
+    opacity: 0.55;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .card-surface {
+    background: var(--color-surface-1);
+    border: 1px solid var(--color-line);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.04);
+  }
+
+  .amber-glow {
+    background: radial-gradient(
+      60% 50% at 50% 0%,
+      color-mix(in oklab, var(--color-amber) 16%, transparent) 0%,
+      transparent 70%
+    );
+  }
+
+  .safe-bottom {
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+  }
+
+  /* Firma de la portada: la captura de Hoy se ve a medias y su base se funde con el fondo. */
+  .captura-mascara {
+    -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent);
+    mask-image: linear-gradient(to bottom, #000 62%, transparent);
+  }
+
+  /* Flotación lenta del dispositivo (7 s, 8 px). */
+  .captura-flota {
+    animation: captura-flota 7s ease-in-out infinite;
+  }
+}
+
+@keyframes captura-flota {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Con movimiento reducido, la captura no se mueve. */
+@media (prefers-reduced-motion: reduce) {
+  .captura-flota {
+    animation: none;
+  }
+}
