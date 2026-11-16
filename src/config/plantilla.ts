@@ -20,8 +20,11 @@ export const plantilla = {
   slogan: ['Cinco minutos.', 'Otra mente.'] as readonly [string, string],
   /** Promesa en una línea: se usa en la descripción de la página y del manifiesto. */
   tagline: 'Cinco minutos. Otra mente. Lecciones diarias para pensar mejor, liderar con criterio y entender el mundo.',
-  /** Correo de soporte de ejemplo. Cámbialo por uno tuyo antes de publicar. */
-  contactoEmail: 'correo@correo.com',
+  /**
+   * Correo de soporte. El real no va en el código (npm run verificar lo marca como dato personal):
+   * se define en la variable pública VITE_CONTACTO_EMAIL del hosting o de .env.local. Sin ella se ve el de ejemplo.
+   */
+  contactoEmail: (import.meta.env?.VITE_CONTACTO_EMAIL as string | undefined) || 'correo@correo.com',
   /** Responsable de los textos legales. Si vendes con otra razón social, cámbiala aquí. */
   responsable: 'MILLION BUSINESS DIGITAL',
   /**
