@@ -18,18 +18,6 @@ export const FUNNEL_QUESTIONS: FunnelQuestion[] = [
     ],
   },
   {
-    id: 'tiempo',
-    icon: 'clock',
-    prompt: '¿Cuánto tiempo real puedes dedicarle al día?',
-    hint: 'Elige el tiempo que tienes.',
-    options: [
-      { value: '5', label: '5 minutos entre tareas', weights: { constante: 1 } },
-      { value: '10', label: 'Unos 10 minutos', weights: { curioso: 1 } },
-      { value: '15', label: '15 a 20 minutos', weights: { lider: 1 } },
-      { value: 'variable', label: 'Depende del día', weights: { estratega: 1 } },
-    ],
-  },
-  {
     id: 'consumo',
     icon: 'headphones',
     prompt: 'Cuando consumes podcasts, videos o libros, ¿qué te pasa?',
@@ -71,49 +59,6 @@ export const FUNNEL_QUESTIONS: FunnelQuestion[] = [
       { value: 'abandono', label: 'Empiezo fuerte y a la semana me abandono', weights: { constante: 2 } },
       { value: 'inicio', label: 'No sé por dónde empezar', weights: { curioso: 1, estratega: 1 } },
       { value: 'pena', label: 'Me da pena no saber lo básico', weights: { curioso: 2 } },
-    ],
-  },
-  {
-    id: 'persona',
-    icon: 'mirror',
-    prompt: '¿Qué persona quieres ser dentro de un año?',
-    options: [
-      { value: 'criterio', label: 'Alguien con criterio propio al opinar', weights: { curioso: 2 } },
-      { value: 'lider', label: 'Un líder al que la gente quiere seguir', weights: { lider: 2 } },
-      { value: 'negocio', label: 'Alguien que entiende cómo funciona un negocio', weights: { estratega: 2 } },
-      { value: 'constante', label: 'Alguien constante en quien puedo confiar', weights: { constante: 2 } },
-    ],
-  },
-  {
-    id: 'horario',
-    icon: 'sun',
-    prompt: '¿Cuándo te conviene aprender?',
-    hint: 'Guardamos tu horario preferido. Puedes cambiarlo después; no enviamos recordatorios.',
-    options: [
-      { value: '07:30', label: 'Por la mañana, antes de empezar', weights: {} },
-      { value: '13:00', label: 'A mediodía, en la pausa', weights: {} },
-      { value: '21:00', label: 'Por la noche, antes de dormir', weights: {} },
-    ],
-  },
-  {
-    id: 'disposicion',
-    icon: 'compass',
-    prompt: '¿Qué tan dispuesto estás a cambiar 5 minutos de scroll por crecer?',
-    options: [
-      { value: 'alta', label: 'Muy dispuesto. Ya lo intenté antes', weights: { constante: 1 } },
-      { value: 'media', label: 'Dispuesto, si es simple de sostener', weights: { curioso: 1 } },
-      { value: 'duda', label: 'Tengo dudas, pero quiero probar', weights: { estratega: 1 } },
-    ],
-  },
-  {
-    id: 'ambicion',
-    icon: 'trophy',
-    prompt: '¿Qué te gustaría haber logrado en 6 meses?',
-    options: [
-      { value: 'sabio', label: 'Que ahora entiendo mejor el mundo y lo explico con claridad', weights: { curioso: 2 } },
-      { value: 'equipo', label: 'Que mi equipo confía más en mis decisiones', weights: { lider: 2 } },
-      { value: 'numeros', label: 'Que leo mi negocio con números y no con intuición', weights: { estratega: 2 } },
-      { value: 'racha', label: 'Que tengo un hábito que sí sigo', weights: { constante: 2 } },
     ],
   },
 ]

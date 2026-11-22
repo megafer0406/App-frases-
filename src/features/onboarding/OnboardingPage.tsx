@@ -37,11 +37,7 @@ export function OnboardingPage() {
   const [step, setStep] = useState(0)
   const [finishing, setFinishing] = useState(false)
   const [goal, setGoal] = useState<TrackId>(defaultTrack)
-  const [time, setTime] = useState<string>(
-    FUNNEL_QUESTIONS.find((q) => q.id === 'horario')?.options.some((o) => o.value === funnel.answers.horario)
-      ? (funnel.answers.horario as string)
-      : '07:30',
-  )
+  const [time, setTime] = useState<string>('07:30')
 
   if (!account) return <Navigate to="/registro" replace />
   if (hasOnboarded(data) && !finishing) return <Navigate to="/hoy" replace />

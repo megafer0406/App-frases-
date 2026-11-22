@@ -6,13 +6,10 @@ describe('scoreArchetype', () => {
   it('elige el arquetipo con más puntos', () => {
     const answers = {
       objetivo: 'negocio', // estratega +2
-      tiempo: 'variable', // estratega +1
       consumo: 'informado', // estratega +1, lider +1
       conversacion: 'opinar', // estratega +1, curioso +1
       miedo: 'rezago', // estratega +2
       frenos: 'inicio', // curioso +1, estratega +1
-      persona: 'negocio', // estratega +2
-      ambicion: 'numeros', // estratega +2
     }
     const { archetypeId, scores } = scoreArchetype(answers, FUNNEL_QUESTIONS)
     expect(archetypeId).toBe('estratega')
@@ -20,7 +17,7 @@ describe('scoreArchetype', () => {
   })
 
   it('en caso de empate gana el primero del orden', () => {
-    const { archetypeId } = scoreArchetype({ objetivo: 'constancia', persona: 'lider' }, FUNNEL_QUESTIONS)
+    const { archetypeId } = scoreArchetype({ objetivo: 'constancia', miedo: 'liderazgo' }, FUNNEL_QUESTIONS)
     // constante +2 y lider +2: empate; gana curioso/lider según el orden (lider aparece antes que constante).
     expect(archetypeId).toBe('lider')
   })
@@ -48,7 +45,7 @@ describe('scoreArchetype', () => {
     }
   })
 
-  it('el quiz tiene 10 preguntas (más el paso de nombre suman 11)', () => {
-    expect(FUNNEL_QUESTIONS).toHaveLength(10)
+  it('el quiz tiene 5 preguntas (más el paso de nombre suman 6)', () => {
+    expect(FUNNEL_QUESTIONS).toHaveLength(5)
   })
 })
