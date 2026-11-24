@@ -15,6 +15,15 @@ import {
   type FieldErrors,
 } from '../services/auth'
 import { track } from '../services/analytics'
+import {
+  cerrarSesionEnLaNube,
+  cuentasEnLaNube,
+  guardarProgreso,
+  iniciarSesionEnLaNube,
+  leerProgreso,
+  registrarEnLaNube,
+  sesionEnLaNube,
+} from '../services/cuentas'
 
 export interface FunnelState {
   name: string
@@ -100,6 +109,25 @@ export const useAppStore = create<AppState>()(
         if (Object.keys(errors).length > 0) return { ok: false, errors }
 
         const email = normalizeEmail(input.email)
+        if (cuentasEnLaNube) {
+          const nube = await registrarEnLaNube(email, input.password, input.name.trim())
+          if (!nube.ok) return { ok: false, message: nube.message }
+          const cuenta: Account = {
+            id: nube.userId,
+            email,
+            name: nube.nombre,
+            passwordHash: '',
+            salt: '',
+            createdAt: nowIso(),
+          }
+          set((s) => ({
+            accounts: [...s.accounts.filter((a) => a.id !== cuenta.id), cuenta],
+            sessionUserId: cuenta.id,
+            users: { ...s.users, [cuenta.id]: emptyUserData() },
+          }))
+          track('account_created')
+          return { ok: true }
+        }
         if (get().accounts.some((a) => a.email === email)) {
           return { ok: false, errors: { email: DUPLICATE_EMAIL_MESSAGE } }
         }
@@ -127,6 +155,22 @@ export const useAppStore = create<AppState>()(
         const errors = validateLogin(input)
         if (Object.keys(errors).length > 0) return { ok: false, errors }
 
+        if (cuentasEnLaNube) {
+          const nube = await iniciarSesionEnLaNube(normalizeEmail(input.email), input.password)
+          if (!nube.ok) return { ok: false, message: nube.message }
+          const email = normalizeEmail(input.email)
+          const datos = await leerProgreso(nube.userId).catch(() => null)
+          set((s) => ({
+            accounts: [
+              ...s.accounts.filter((a) => a.id !== nube.userId),
+              { id: nube.userId, email, name: nube.nombre || email.split('@')[0], passwordHash: '', salt: '', createdAt: nowIso() },
+            ],
+            sessionUserId: nube.userId,
+            users: { ...s.users, [nube.userId]: datos ?? emptyUserData() },
+          }))
+          return { ok: true }
+        }
+
         const account = get().accounts.find((a) => a.email === normalizeEmail(input.email))
         if (!account) return { ok: false, message: INVALID_CREDENTIALS_MESSAGE }
 
@@ -137,7 +181,10 @@ export const useAppStore = create<AppState>()(
         return { ok: true }
       },
 
-      logout: () => set({ sessionUserId: null }),
+      logout: () => {
+        if (cuentasEnLaNube) void cerrarSesionEnLaNube()
+        set({ sessionUserId: null })
+      },
 
       deleteAccount: () => {
         const id = get().sessionUserId
@@ -358,3 +405,44 @@ export function selectCurrentData(state: AppState): UserData | null {
   return state.users[state.sessionUserId] ?? null
 }
 
+/* ---------- Sincronización con la nube ---------- */
+
+let temporizadorGuardado: ReturnType<typeof setTimeout> | undefined
+
+if (cuentasEnLaNube) {
+  // Cada cambio del progreso se guarda en Supabase, con una pausa corta para no escribir a cada toque.
+  useAppStore.subscribe((state, previo) => {
+    const id = state.sessionUserId
+    if (!id || state.users[id] === previo.users[id]) return
+    const datos = state.users[id]
+    clearTimeout(temporizadorGuardado)
+    temporizadorGuardado = setTimeout(() => {
+      guardarProgreso(id, datos).catch(() => {
+        // Sin conexión: el progreso queda en el navegador y se intenta de nuevo con el siguiente cambio.
+      })
+    }, 800)
+  })
+}
+
+/** Al abrir la app: si hay sesión en la nube, carga el progreso de esa cuenta. */
+export async function restaurarSesionEnLaNube(): Promise<void> {
+  if (!cuentasEnLaNube) return
+  const sesion = await sesionEnLaNube()
+  if (!sesion) return
+  const datos = await leerProgreso(sesion.userId).catch(() => null)
+  useAppStore.setState((s) => ({
+    accounts: [
+      ...s.accounts.filter((a) => a.id !== sesion.userId),
+      {
+        id: sesion.userId,
+        email: sesion.email,
+        name: sesion.nombre || sesion.email.split('@')[0],
+        passwordHash: '',
+        salt: '',
+        createdAt: nowIso(),
+      },
+    ],
+    sessionUserId: sesion.userId,
+    users: { ...s.users, [sesion.userId]: datos ?? s.users[sesion.userId] ?? emptyUserData() },
+  }))
+}
