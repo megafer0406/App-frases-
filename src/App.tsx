@@ -1,5 +1,5 @@
 import { AnimatePresence } from 'motion/react'
-import { lazy, Suspense, useEffect, type ReactNode } from 'react'
+import { lazy, Suspense, useEffect, useState, type ReactNode } from 'react'
 import { Navigate, Route, Routes, useLocation } from 'react-router'
 import { Ambient } from './components/layout/Ambient'
 import { AppLayout } from './components/layout/AppLayout'
@@ -9,6 +9,7 @@ import { selectCurrentData, selectCurrentAccount, useAppStore } from './store/ap
 import { WelcomePage } from './features/funnel/WelcomePage'
 import { NotFoundPage } from './features/errors/NotFoundPage'
 import { pageMeta } from './lib/pageMeta'
+import { correoRecienConfirmado } from './services/cuentas'
 
 const QuizPage = lazy(() => import('./features/funnel/QuizPage').then((m) => ({ default: m.QuizPage })))
 const AnalyzingPage = lazy(() => import('./features/funnel/AnalyzingPage').then((m) => ({ default: m.AnalyzingPage })))
@@ -63,6 +64,7 @@ export default function App() {
   return (
     <>
       <Ambient />
+      <AvisoConfirmacion />
       <Suspense fallback={<FullScreenLoader />}>
         <AnimatePresence mode="wait" initial={false}>
           <Routes location={location} key={location.pathname}>
@@ -117,5 +119,23 @@ export default function App() {
         </AnimatePresence>
       </Suspense>
     </>
+  )
+}
+
+/** Aviso único después de confirmar el correo desde el enlace del email. */
+function AvisoConfirmacion() {
+  const [visible, setVisible] = useState(correoRecienConfirmado)
+  useEffect(() => {
+    if (!correoRecienConfirmado) return
+    window.history.replaceState(null, '', window.location.pathname)
+  }, [])
+  if (!visible) return null
+  return (
+    <div role="status" className="fixed inset-x-4 top-4 z-50 mx-auto flex max-w-[400px] items-center justify-between gap-3 rounded-card border border-line bg-surface-1 px-4 py-3 text-[15px] shadow-[0_8px_24px_-12px_rgb(31_61_56/0.35)]">
+      <span>Tu correo quedó confirmado. Ya puedes entrar.</span>
+      <button type="button" onClick={() => setVisible(false)} className="shrink-0 font-semibold text-amber underline-offset-4 hover:underline">
+        Entendido
+      </button>
+    </div>
   )
 }

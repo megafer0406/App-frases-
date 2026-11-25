@@ -8,10 +8,17 @@ import type { UserData } from '../domain/types'
 const url = import.meta.env.VITE_CUENTAS_URL as string | undefined
 const anonKey = import.meta.env.VITE_CUENTAS_ANON_KEY as string | undefined
 
+/** Llegó desde el enlace del correo de confirmación: lo leemos antes de que Supabase limpie la dirección. */
+function llegoPorConfirmacion(): boolean {
+  if (typeof window === 'undefined') return false
+  return /(^|[#&?])type=(signup|email)(&|$)/.test(window.location.hash + window.location.search)
+}
+export const correoRecienConfirmado = llegoPorConfirmacion()
+
 let client: SupabaseClient | null = null
 if (url && anonKey) {
   client = createClient(url, anonKey, {
-    auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: false },
+    auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
   })
 }
 
