@@ -12,39 +12,44 @@ export const PENSAMIENTO_LESSONS: Lesson[] = [
         kind: 'concepto',
         title: 'Qué es',
         paragraphs: [
-          'El sesgo de confirmación es la tendencia a buscar, interpretar y recordar la información que apoya nuestras creencias previas, y a restarle valor a la que las contradice.',
-          'Ocurre con todo: política, dinero, salud, relaciones y decisiones de negocio.',
+          'El sesgo de confirmación es la tendencia a buscar, interpretar y recordar la información que apoya lo que ya creemos, y a restarle valor a la que lo contradice.',
+          'Hoy lo alimentan las redes. Si un video te dio la razón una vez, el feed aprende que eso te gusta y te muestra más de lo mismo. Así, tu mundo se parece cada vez más a tu opinión.',
+          'No es falta de inteligencia. Es un atajo mental que todos usamos, incluso las personas más preparadas.',
         ],
+        takeaway: 'El problema no es tener creencias: es no buscar nada que pueda cambiarlas.',
       },
       {
         kind: 'historia',
         title: 'Un experimento clásico',
         paragraphs: [
-          'En 1960, el psicólogo Peter Wason presentó a sus participantes una secuencia de números y les pidió descubrir la regla oculta que la generaba. Muchos buscaban ejemplos que confirmaran su hipótesis y casi nunca probaban casos que podían refutarla.',
-          'Por eso el experimento se usa para ilustrar este sesgo, una de las limitaciones más comunes del razonamiento.',
+          'En 1960, el psicólogo Peter Wason mostró a sus participantes la secuencia 2, 4, 6 y les pidió descubrir la regla que la generaba. Podían proponer cualquier otra secuencia y ver si cumplía la regla.',
+          'La mayoría formulaba una hipótesis, como «números pares que suben de dos en dos», y probaba solo secuencias que la confirmaban, como 8, 10, 12. Casi nunca probaban algo que pudiera fallar, como 1, 2, 3.',
+          'La regla real era mucho más simple: cualquier secuencia de números en orden creciente. Quienes buscaban confirmar su idea tardaban mucho más en descubrirla.',
         ],
+        takeaway: 'Confirmar tu idea es fácil. Ponerla a prueba es lo que te acerca a la verdad.',
       },
       {
         kind: 'concepto',
         title: 'Cómo contrarrestarlo',
         paragraphs: [
-          'Pregúntate: ¿qué evidencia tendría que ver para cambiar de opinión? Si no puedes responder, probablemente no estés evaluando, sino defendiendo.',
-          'Busca de forma activa el mejor argumento de quien piensa distinto, no la versión más débil.',
+          'Antes de creer algo importante, pregúntate: ¿qué evidencia tendría que ver para cambiar de opinión? Si no puedes responder, no estás evaluando: estás defendiendo una postura.',
+          'Luego busca el mejor argumento de quien piensa distinto, no la versión más débil. Y antes de compartir algo, revisa al menos una fuente que no comparta tu punto de vista.',
+          'En el feed, sigue a alguien que piense diferente a ti, aunque no te guste. No para estar de acuerdo, sino para entender.',
         ],
         takeaway: 'Una opinión que no podría cambiar con evidencia no es una conclusión: es una preferencia.',
       },
     ],
     quiz: [
       {
-        question: '¿Qué es el sesgo de confirmación?',
+        question: 'Llevas semanas convencido de que un negocio va mal porque un cliente se quejó en redes. ¿Qué haces para comprobarlo?',
         options: [
-          'Confiar en fuentes oficiales',
-          'La tendencia a buscar la información que apoya lo que ya creemos',
-          'Tener memoria perfecta',
-          'Creer en la suerte',
+          'Buscar más comentarios que confirmen tu idea',
+          'Revisar quejas y opiniones de otros clientes, también las positivas',
+          'Compartir la queja para que otros te den la razón',
+          'Ignorar cualquier dato que no venga de tu propio equipo',
         ],
         correctIndex: 1,
-        explanation: 'Es la tendencia a favorecer la información que confirma nuestras creencias previas.',
+        explanation: 'Para comprobar una idea necesitas evidencia que pueda contradecirla, no solo la que la confirma.',
       },
       {
         question: '¿Qué pregunta ayuda a contrarrestarlo?',
@@ -61,7 +66,7 @@ export const PENSAMIENTO_LESSONS: Lesson[] = [
     reflectionPrompt: '¿Qué creencia tuya sobre un tema importante no has puesto a prueba con datos que la contradigan?',
     action: 'Esta semana busca el mejor argumento a favor de una postura que no compartes y resúmelo en tres frases.',
     sources: [
-      'Wason, P. C. (1960). On the failure to eliminate hypotheses in a conceptual task. *Quarterly Journal of Experimental Psychology*.',
+      'Wason, P. C. (1960). On the failure to eliminate hypotheses in a conceptual task. Quarterly Journal of Experimental Psychology, 12(3), 129–140.',
     ],
   },
   {
